@@ -22,7 +22,7 @@ python parseaddrs.py
 ## Running tests
 
 ```
-pytest && mypy .
+mypy . && pytest
 ```
 
 [tenants2]: https://github.com/justFixNYC/tenants2
