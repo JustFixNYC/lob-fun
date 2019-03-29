@@ -13,6 +13,12 @@ def test_parse_address_works(raw, expected):
     assert parse_address(raw) == expected
 
 
+def test_is_populated_works():
+    assert ParsedAddress('foo', '', '', '').is_populated() is False
+    assert ParsedAddress('', 'foo', '', '').is_populated() is False
+    assert ParsedAddress('o', 'foo', '1', 'b').is_populated() is True
+
+
 @pytest.mark.parametrize('value,expected', [
     ('Blarg,', 'Blarg'),
     ('Blarg\n', 'Blarg'),

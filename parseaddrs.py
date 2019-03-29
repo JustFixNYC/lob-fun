@@ -15,6 +15,12 @@ class ParsedAddress(NamedTuple):
     state: str
     zipcode: str
 
+    def is_populated(self) -> bool:
+        for value in self:
+            if not value:
+                return False
+        return True
+
 
 class LandlordParseResult(NamedTuple):
     raw_address: str
@@ -74,5 +80,10 @@ def parse_landlord_addresses() -> Iterator[LandlordParseResult]:
 
 
 if __name__ == '__main__':
+    total = 0
     for addr in parse_landlord_addresses():
-        print(addr)
+        total += 1
+        print(repr(addr.raw_address), addr.is_looked_up)
+        parsed = json.dumps(addr.parsed_address)
+        print(f"  {parsed}")
+    print(f"{total} total addresses.")
