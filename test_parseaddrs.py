@@ -19,6 +19,10 @@ def test_is_populated_works():
     assert ParsedAddress('o', 'foo', '1', 'b').is_populated() is True
 
 
+def test_short_desc_works():
+    assert ParsedAddress('foo', '1', '2', '3').short_desc() == "'foo' '1' '2' '3'"
+
+
 @pytest.mark.parametrize('value,expected', [
     ('Blarg,', 'Blarg'),
     ('Blarg\n', 'Blarg'),

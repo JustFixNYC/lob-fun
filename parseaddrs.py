@@ -20,6 +20,9 @@ class ParsedAddress(NamedTuple):
             if not value:
                 return False
         return True
+    
+    def short_desc(self) -> str:
+        return ' '.join(map(lambda value: repr(value), self))
 
 
 class LandlordParseResult(NamedTuple):
@@ -77,13 +80,3 @@ def parse_landlord_addresses() -> Iterator[LandlordParseResult]:
             parsed_address=parsed_address,
         )
         yield pa
-
-
-if __name__ == '__main__':
-    total = 0
-    for addr in parse_landlord_addresses():
-        total += 1
-        print(repr(addr.raw_address), addr.is_looked_up)
-        parsed = json.dumps(addr.parsed_address)
-        print(f"  {parsed}")
-    print(f"{total} total addresses.")

@@ -1,3 +1,7 @@
+lob==4.0.0
 usaddress==0.5.10
+
+# Development/testing stuff.
 mypy==0.670
 pytest==4.3.1
+python-dotenv==0.10.1
